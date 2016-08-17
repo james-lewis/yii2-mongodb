@@ -230,8 +230,8 @@ abstract class ActiveRecord extends BaseActiveRecord
                 }
             }
         }
+        $newId = static::getCollection()->insert($values);
         if(!isset($values['_id'])){
-            $newId = static::getCollection()->insert($values);
             $this->setAttribute('_id', $newId);
             $values['_id'] = $newId;
         }
