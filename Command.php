@@ -182,7 +182,7 @@ class Command extends Object
             $this->beginProfile($token, __METHOD__);
 
             $this->db->open();
-            $server = $this->db->manager->selectServer($this->getReadPreference());
+            $server = $this->db->manager;
             $mongoCommand = new \MongoDB\Driver\Command($this->document);
             $cursor = $server->executeCommand($databaseName, $mongoCommand);
             $cursor->setTypeMap($this->db->typeMap);
@@ -285,7 +285,7 @@ class Command extends Object
 
             $query = new \MongoDB\Driver\Query($this->document, $options);
             $this->db->open();
-            $server = $this->db->manager->selectServer($this->getReadPreference());
+            $server = $this->db->manager;
             $cursor = $server->executeQuery($databaseName . '.' . $collectionName, $query);
             $cursor->setTypeMap($this->db->typeMap);
 
