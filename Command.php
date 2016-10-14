@@ -237,7 +237,7 @@ class Command extends Object
             }
 
             $this->db->open();
-            $server = $this->db->manager->selectServer($this->getReadPreference());
+            $server = $this->db->manager;
             $writeResult = $server->executeBulkWrite($databaseName . '.' . $collectionName, $batch, $this->getWriteConcern());
 
             $this->endProfile($token, __METHOD__);
